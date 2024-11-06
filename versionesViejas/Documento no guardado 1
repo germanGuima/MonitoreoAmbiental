@@ -1,0 +1,29 @@
+import pymongo
+import pprint
+import datetime as dt
+# Establish connection
+import time
+conn = "mongodb://localhost:27017"
+client = pymongo.MongoClient(conn)
+
+def get_database():
+ 
+   # Provide the mongodb atlas url to connect python to mongodb using pymongo
+   CONNECTION_STRING = "mongodb+srv://ger:iaci2023@cluster0.vxyuxqk.mongodb.net/"
+ 
+   # Create a connection using MongoClient. You can import MongoClient or use pymongo.MongoClient
+   client = MongoClient(CONNECTION_STRING)
+ 
+   # Create the database for our example (we will use the same database throughout the tutorial
+   return client['user_shopping_list']
+
+# Create a database
+db = client.classDB
+
+
+listaSensor = list(db.sensor.find({'deviceId':'NodeMCU'}))
+sensor1=listaSensor[0]
+
+for i,post in enumerate(db.sensor.find()):
+    print(post)
+print(i)
